@@ -1,5 +1,5 @@
 # Calculadora básica en Python
-
+#se definen los metodos para las operaciones
 def sumar(a, b):
     return a + b
 
@@ -23,7 +23,17 @@ def raiz_cuadrada(a):
         return a ** 0.5
     else:
         return "Error: No se puede calcular la raíz cuadrada de un número negativo"
+    
+def es_primo(n):
+    if n <= 1:
+        return False
+    for i in range(2, int(n**0.5) + 1):
+        if n % i == 0:
+            return False
+    return True
 
+
+#presentacion de menus y seleccion de opciones
 def calculadora():
     print("calculadora lau ")
     print("Opciones:")
@@ -33,10 +43,11 @@ def calculadora():
     print("4. Dividir")
     print("5. Potencia")
     print("6. Raíz cuadrada")
+    print("7. Verificar primo")
 
-    opcion = input("Elige una opción (1/2/3/4/5/6): ")
+    opcion = input("Elige una opción (1/2/3/4/5/6/7): ")
 
-    if opcion in ['1', '2', '3', '4', '5', '6']:
+    if opcion in ['1', '2', '3', '4', '5', '6', '7' ]:
         num1 = float(input("Ingresa el primer número: "))
         num2 = float(input("Ingresa el segundo número: "))
 
@@ -52,8 +63,12 @@ def calculadora():
             print(f"El resultado de la potencia es: {potencia(num1, num2)}")
         elif opcion == '6':
             print(f"El resultado de la raíz cuadrada es: {raiz_cuadrada(num1)}")
-    else:
-        print("Opción no válida. Por favor, elige una opción del 1 al 6.")
+        elif opcion == '7': 
+            if es_primo(int(num1)):
+                print(f"{int(num1)} es un número primo.")
+            else:
+                print(f"{int(num1)} no es un número primo.")
+    print("Opción no válida. Por favor, elige una opción del 1 al 7.")
 
 if __name__ == "__main__":
     calculadora()
